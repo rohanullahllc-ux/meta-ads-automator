@@ -6,6 +6,8 @@ import MetaCallback from './pages/MetaCallback'
 import NewLaunch from './pages/NewLaunch'
 import LaunchDetail from './pages/LaunchDetail'
 import Account from './pages/Account'
+import Admin from './pages/Admin'
+import RequestAccess from './pages/RequestAccess'
 import { DataDeletion, Guide, Privacy, Terms } from './pages/Legal'
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
@@ -19,6 +21,8 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/request-access" element={<RequestAccess />} />
+      <Route path="/admin" element={<RequireAuth><Admin /></RequireAuth>} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/data-deletion" element={<DataDeletion />} />

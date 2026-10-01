@@ -19,3 +19,9 @@ verify_jwt = false
 
 [functions.launch-undo]
 verify_jwt = false
+
+[functions.access-request]
+verify_jwt = false
+
+[functions.admin-create-client]
+verify_jwt = false

@@ -92,6 +92,8 @@ button.link { background: none; color: var(--accent); padding: 4px 8px; }
 .badge.warn { color: var(--danger); border-color: var(--danger); }
 
 .header-link { margin-left: 12px; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.creds { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 14px; user-select: all; }
 .legal { max-width: 760px; }
 .legal h2 { margin-top: 28px; }
 .legal ul, .legal ol { padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }

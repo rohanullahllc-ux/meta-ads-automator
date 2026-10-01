@@ -21,6 +21,7 @@ export default function Dashboard() {
   const [workspace, setWorkspace] = useState<Workspace | null>(null)
   const [accounts, setAccounts] = useState<AdAccount[]>([])
   const [launches, setLaunches] = useState<RecentLaunch[]>([])
+  const [isAdmin, setIsAdmin] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [connecting, setConnecting] = useState(false)
   const justConnected = params.get('meta') === 'connected'
@@ -46,6 +47,9 @@ export default function Dashboard() {
         .limit(10)
       if (cancelled) return
       if (!jobs.error) setLaunches(jobs.data ?? [])
+      const adm = await supabase.from('platform_admins').select('user_id').maybeSingle()
+      if (cancelled) return
+      setIsAdmin(!adm.error && !!adm.data)
     }
     load()
     return () => {
@@ -70,6 +74,7 @@ export default function Dashboard() {
         <strong>Meta Ads Automator</strong>
         <span>
           {session?.user.email}
+          {isAdmin && <Link to="/admin" className="header-link">Admin</Link>}
           <Link to="/account" className="header-link">Account</Link>
           <button className="link" onClick={() => supabase.auth.signOut()}>Sign out</button>
         </span>

@@ -17,6 +17,13 @@ export async function requireUser(req: Request, admin: SupabaseClient): Promise<
   return data.user
 }
 
+/** Throws 403 unless the user is a platform admin (the founder). */
+export async function requirePlatformAdmin(admin: SupabaseClient, userId: string): Promise<void> {
+  const { data, error } = await admin.from('platform_admins').select('user_id').eq('user_id', userId).maybeSingle()
+  if (error) throw error
+  if (!data) throw new HttpError(403, 'Admin access is required.')
+}
+
 /** The workspace the user may connect ad accounts to (owner or editor). */
 export async function editableWorkspaceId(
   admin: SupabaseClient,

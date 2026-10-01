@@ -45,6 +45,8 @@ export default function Login() {
         <p className="muted legal-links">
           Access is by invitation during our private beta.
           <br />
+          <Link to="/request-access">Request access</Link>
+          <br />
           <Link to="/privacy">Privacy</Link> · <Link to="/terms">Terms</Link> · <Link to="/data-deletion">Data deletion</Link>
         </p>
       </form>
