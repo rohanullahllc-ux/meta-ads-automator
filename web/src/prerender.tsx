@@ -3,12 +3,13 @@
 import type { ReactElement } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
-import { DataDeletion, Privacy, Terms } from './pages/Legal'
+import { DataDeletion, Guide, Privacy, Terms } from './pages/Legal'
 
 export const pages: Record<string, { title: string; element: ReactElement }> = {
   privacy: { title: 'Privacy Policy - Ads Automator', element: <Privacy /> },
   terms: { title: 'Terms of Service - Ads Automator', element: <Terms /> },
   'data-deletion': { title: 'Data Deletion Instructions - Ads Automator', element: <DataDeletion /> },
+  guide: { title: 'Getting started - Ads Automator', element: <Guide /> },
 }
 
 export function renderPage(name: string): string {

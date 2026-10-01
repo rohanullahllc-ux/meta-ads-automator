@@ -6,7 +6,7 @@ import MetaCallback from './pages/MetaCallback'
 import NewLaunch from './pages/NewLaunch'
 import LaunchDetail from './pages/LaunchDetail'
 import Account from './pages/Account'
-import { DataDeletion, Privacy, Terms } from './pages/Legal'
+import { DataDeletion, Guide, Privacy, Terms } from './pages/Legal'
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
@@ -22,6 +22,7 @@ export default function App() {
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/data-deletion" element={<DataDeletion />} />
+      <Route path="/guide" element={<Guide />} />
       <Route path="/" element={<RequireAuth><Dashboard /></RequireAuth>} />
       <Route path="/meta/callback" element={<RequireAuth><MetaCallback /></RequireAuth>} />
       <Route path="/account" element={<RequireAuth><Account /></RequireAuth>} />

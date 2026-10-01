@@ -14,6 +14,7 @@ function Page({ title, children }: { title: string; children: ReactNode }) {
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
           <Link to="/data-deletion">Data deletion</Link>
+          <Link to="/guide">Guide</Link>
         </nav>
       </header>
       <main className="content legal">
@@ -136,6 +137,77 @@ export function Terms() {
 
       <h2>Changes</h2>
       <p>We may update these terms and will change the date above when we do. Continuing to use the service means you accept the update.</p>
+    </Page>
+  )
+}
+
+export function Guide() {
+  return (
+    <Page title="Getting started (private beta)">
+      <p>
+        {NAME} lets you create many Facebook and Instagram ads in one go. You upload your images, write the copy, and
+        the app builds the campaign in your Meta ad account. <strong>Everything is created paused</strong>, so nothing
+        spends money until you switch it on yourself.
+      </p>
+
+      <h2>Before you start</h2>
+      <ul>
+        <li>A Facebook account that has access to your ad account (advertiser or admin).</li>
+        <li>A Facebook Page you manage, for the ads to run from.</li>
+        <li>A working payment method on the ad account. Meta will not create ads without one.</li>
+      </ul>
+
+      <h2>Step 1: Accept your invitation to the app</h2>
+      <p>
+        During our private beta, Meta only allows invited people to use the app. Send us the name of your Facebook profile
+        (or a link to it) and we will invite you as a <strong>Tester</strong>. You will get a Facebook notification and
+        an email from Facebook. Open it and choose <strong>Accept</strong>. You do not need to create anything or
+        register as a developer. If you cannot find the invitation, tell us and we will send it again.
+      </p>
+
+      <h2>Step 2: Sign in</h2>
+      <p>
+        We create your account and send you a temporary password. Sign in at the address we gave you, then open
+        <strong> Account</strong> and change the password.
+      </p>
+
+      <h2>Step 3: Connect your Meta account</h2>
+      <ol>
+        <li>On the dashboard, click <strong>Connect Meta account</strong>.</li>
+        <li>Log in to Facebook and review the permissions. We ask only for what the app needs to create ads.</li>
+        <li>Click <strong>Continue</strong>. You come back to the dashboard and your ad account appears in the list.</li>
+      </ol>
+      <p>Connect once. The connection lasts about 60 days, and we will ask you to reconnect before it ends.</p>
+
+      <h2>Step 4: Create your first launch</h2>
+      <ol>
+        <li>Click <strong>New launch</strong>.</li>
+        <li>Choose the ad account and Page, name the campaign, set a daily budget and the countries.</li>
+        <li>Add your ads: an image, headline, text and link for each.</li>
+        <li>Click <strong>Review launch</strong>. Check the summary.</li>
+        <li>Click <strong>Create in Meta (paused)</strong>.</li>
+      </ol>
+      <p>
+        Then open the campaign in Meta Ads Manager, check it, and switch it on there when you are ready. Changed your mind?
+        Press <strong>Undo launch</strong> and everything the launch created is removed.
+      </p>
+
+      <h2>If something goes wrong</h2>
+      <ul>
+        <li>
+          <strong>"No usable payment method":</strong> add a payment method to the ad account in Meta Ads Manager under
+          billing settings, then press <strong>Retry failed ads</strong>.
+        </li>
+        <li><strong>"The Meta connection has expired":</strong> press <strong>Reconnect Meta account</strong> on the dashboard.</li>
+        <li><strong>Anything else:</strong> copy the message you see and email us. We will help.</li>
+      </ul>
+
+      <h2>Your data</h2>
+      <p>
+        We only use your Meta access to create the ads you ask for. You can remove our access in Facebook at any time and
+        ask us to delete your data. See the <Link to="/data-deletion">data deletion instructions</Link> and our{' '}
+        <Link to="/privacy">privacy policy</Link>.
+      </p>
     </Page>
   )
 }
