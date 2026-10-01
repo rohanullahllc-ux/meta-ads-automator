@@ -148,7 +148,8 @@ export default function LaunchDetail() {
           <ul className="plain">
             <li><strong>{s.display.ads}</strong> ads in <strong>{s.display.ad_sets}</strong> ad set{s.display.ad_sets === 1 ? '' : 's'}</li>
             <li>Daily budget: <strong>{s.display.daily_budget}</strong> per ad set, <strong>{s.display.total_daily_budget}</strong> in total once active</li>
-            <li>Countries: {s.countries.join(', ')} · Ages {s.age_min}-{s.age_max}</li>
+            {/* Launches saved before the UK fix still say "UK"; Meta's code is GB, which is what is actually sent. */}
+            <li>Countries: {[...new Set(s.countries.map((c) => (c === 'UK' ? 'GB' : c)))].join(', ')} · Ages {s.age_min}-{s.age_max}</li>
           </ul>
           <p className="muted">Everything is created <strong>paused</strong>. Nothing will spend until you activate it in Meta Ads Manager.</p>
           {job.warnings.length > 0 && (
