@@ -25,3 +25,6 @@ verify_jwt = false
 
 [functions.admin-create-client]
 verify_jwt = false
+
+[functions.admin-link-account]
+verify_jwt = false

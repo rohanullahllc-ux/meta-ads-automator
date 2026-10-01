@@ -92,7 +92,18 @@ export default function Dashboard() {
         <section className="card">
           <h2>Ad accounts</h2>
           {accounts.length === 0 ? (
-            <p>No Meta account connected yet.</p>
+            isAdmin ? (
+              <p>No Meta account connected yet.</p>
+            ) : (
+              <>
+                <p>No ad account is linked to your workspace yet.</p>
+                <p className="muted">
+                  In Meta Business Suite, share your ad account and Facebook Page with our business ("Digital Ventures",
+                  Business ID 1808077727046655) and give full access. Then send us the ad account ID and we will link it.
+                  See the <Link to="/guide">guide</Link> for the exact steps.
+                </p>
+              </>
+            )
           ) : (
             <ul className="account-list">
               {accounts.map((a) => (
@@ -112,9 +123,11 @@ export default function Dashboard() {
               ))}
             </ul>
           )}
-          <button onClick={connect} disabled={connecting || !workspace}>
-            {connecting ? 'Redirecting to Meta...' : accounts.length ? 'Reconnect Meta account' : 'Connect Meta account'}
-          </button>
+          {isAdmin && (
+            <button onClick={connect} disabled={connecting || !workspace}>
+              {connecting ? 'Redirecting to Meta...' : accounts.length ? 'Reconnect Meta account' : 'Connect Meta account'}
+            </button>
+          )}
         </section>
 
         <section className="card">

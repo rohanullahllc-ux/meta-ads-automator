@@ -152,32 +152,32 @@ export function Guide() {
 
       <h2>Before you start</h2>
       <ul>
-        <li>A Facebook account that has access to your ad account (advertiser or admin).</li>
+        <li>Admin access to your ad account in Meta Business Suite, so you can share it with us.</li>
         <li>A Facebook Page you manage, for the ads to run from.</li>
         <li>A working payment method on the ad account. Meta will not create ads without one.</li>
       </ul>
 
-      <h2>Step 1: Accept your invitation to the app</h2>
-      <p>
-        During our private beta, Meta only allows invited people to use the app. Send us the name of your Facebook profile
-        (or a link to it) and we will invite you as a <strong>Tester</strong>. You will get a Facebook notification and
-        an email from Facebook. Open it and choose <strong>Accept</strong>. You do not need to create anything or
-        register as a developer. If you cannot find the invitation, tell us and we will send it again.
-      </p>
-
-      <h2>Step 2: Sign in</h2>
+      <h2>Step 1: Sign in</h2>
       <p>
         We create your account and send you a temporary password. Sign in at the address we gave you, then open
         <strong> Account</strong> and change the password.
       </p>
 
-      <h2>Step 3: Connect your Meta account</h2>
+      <h2>Step 2: Share your ad account and Page with us</h2>
+      <p>You do this once, in Meta Business Suite. You never log in to Facebook through our app.</p>
       <ol>
-        <li>On the dashboard, click <strong>Connect Meta account</strong>.</li>
-        <li>Log in to Facebook and review the permissions. We ask only for what the app needs to create ads.</li>
-        <li>Click <strong>Continue</strong>. You come back to the dashboard and your ad account appears in the list.</li>
+        <li>Open <strong>Business settings</strong> in Meta Business Suite and choose <strong>Partners</strong>.</li>
+        <li>Click <strong>Add</strong>, then <strong>Give a partner access to your assets</strong>.</li>
+        <li>Enter our Business ID: <strong>1808077727046655</strong> (business name: Digital Ventures).</li>
+        <li>Choose your <strong>ad account</strong> and your <strong>Facebook Page</strong> and give full control.</li>
+        <li>Send us your ad account ID (it looks like <em>act_1234567890</em>, shown in Ads Manager).</li>
       </ol>
-      <p>Connect once. The connection lasts about 60 days, and we will ask you to reconnect before it ends.</p>
+
+      <h2>Step 3: We link it</h2>
+      <p>
+        We accept the share and link the ad account to your workspace. It then appears on your dashboard, usually
+        within a few hours. You can revoke our access at any time from the same Partners screen.
+      </p>
 
       <h2>Step 4: Create your first launch</h2>
       <ol>
@@ -198,7 +198,7 @@ export function Guide() {
           <strong>"No usable payment method":</strong> add a payment method to the ad account in Meta Ads Manager under
           billing settings, then press <strong>Retry failed ads</strong>.
         </li>
-        <li><strong>"The Meta connection has expired":</strong> press <strong>Reconnect Meta account</strong> on the dashboard.</li>
+        <li><strong>"The Meta connection has expired":</strong> tell us and we will renew it.</li>
         <li><strong>Anything else:</strong> copy the message you see and email us. We will help.</li>
       </ul>
 

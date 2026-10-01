@@ -36,6 +36,9 @@ export default function Admin() {
   const [created, setCreated] = useState<Created | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [linkEmail, setLinkEmail] = useState('')
+  const [linkAccount, setLinkAccount] = useState('')
+  const [linked, setLinked] = useState<string | null>(null)
 
   const apply = useCallback((r: Loaded) => {
     setIsAdmin(r.isAdmin)
@@ -145,6 +148,46 @@ export default function Admin() {
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </label>
             <button type="submit" disabled={busy !== null}>{busy === 'manual' ? 'Creating...' : 'Create account'}</button>
+          </form>
+        </section>
+
+        <section className="card">
+          <h2>Link an ad account to a client</h2>
+          <p className="muted">
+            The client first shares the ad account and Page with your Business Portfolio in Meta Business Suite and gives
+            your user access. Then enter their sign-in email and the ad account ID here.
+          </p>
+          {linked && <p className="notice">Linked {linked}. The client will see it on their dashboard.</p>}
+          <form
+            className="stack"
+            onSubmit={async (e: FormEvent) => {
+              e.preventDefault()
+              setBusy('link')
+              setError(null)
+              setLinked(null)
+              try {
+                const r = await callFunction<{ meta_account_id: string; name: string | null }>('admin-link-account', {
+                  client_email: linkEmail,
+                  meta_account_id: linkAccount,
+                })
+                setLinked(r.name ? `${r.name} (${r.meta_account_id})` : r.meta_account_id)
+                setLinkAccount('')
+              } catch (err) {
+                setError(err instanceof Error ? err.message : 'Something went wrong.')
+              } finally {
+                setBusy(null)
+              }
+            }}
+          >
+            <label>
+              Client email
+              <input type="email" value={linkEmail} onChange={(e) => setLinkEmail(e.target.value)} required />
+            </label>
+            <label>
+              Ad account ID
+              <input value={linkAccount} onChange={(e) => setLinkAccount(e.target.value)} placeholder="act_1234567890" required />
+            </label>
+            <button type="submit" disabled={busy !== null}>{busy === 'link' ? 'Linking...' : 'Link ad account'}</button>
           </form>
         </section>
 

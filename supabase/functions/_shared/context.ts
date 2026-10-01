@@ -25,7 +25,7 @@ export async function loadAccountContext(admin: SupabaseClient, userId: string, 
 
   const { data: conn, error: connError } = await admin
     .from('meta_connections')
-    .select('facebook_user_id, access_token_encrypted, status, token_expires_at')
+    .select('workspace_id, facebook_user_id, access_token_encrypted, status, token_expires_at')
     .eq('id', account.connection_id)
     .single()
   if (connError) throw connError
@@ -37,7 +37,9 @@ export async function loadAccountContext(admin: SupabaseClient, userId: string, 
   const token = await decryptToken(
     conn.access_token_encrypted,
     mustEnv('TOKEN_ENCRYPTION_KEY'),
-    `${account.workspace_id}:${conn.facebook_user_id}`,
+    // The token is bound to the workspace that made the connection, which differs from the account's
+    // workspace when the founder's connection serves a client (agency model).
+    `${conn.workspace_id}:${conn.facebook_user_id}`,
   )
   return { account, token }
 }
