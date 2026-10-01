@@ -1,0 +1,21 @@
+project_id = "meta-ads-automator"
+
+# The user's JWT is verified inside each function (auth.getUser), so the gateway check is off.
+# This keeps the functions working with Supabase's new publishable/secret API keys.
+[functions.meta-connect-start]
+verify_jwt = false
+
+[functions.meta-connect-complete]
+verify_jwt = false
+
+[functions.meta-list-pages]
+verify_jwt = false
+
+[functions.launch-create]
+verify_jwt = false
+
+[functions.launch-run]
+verify_jwt = false
+
+[functions.launch-undo]
+verify_jwt = false
